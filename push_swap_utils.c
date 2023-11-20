@@ -6,11 +6,32 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:04:11 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/11/17 13:53:14 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/11/21 00:12:44 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	check_double(int number, t_list *stack)
+{
+	t_list	*temp;
+
+	temp = stack;
+	while(!temp)
+	{
+		if (temp->content == number)
+			return (1);
+		else
+			temp = temp->next;
+	}
+	return (0);
+}
+
+void	free_exit_error(t_list *stack)
+{
+	free_stack(stack);
+	exit_error();
+}
 
 void	exit_error()
 {

@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:19:17 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/11/17 13:53:50 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/11/21 00:09:52 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,22 @@ int	ft_atoi(char *str, t_list *stack)
 	i = 0;
 	sign = 1;
 	number = 0;
-	if (str[i] == '-')
+	if (str[i] == '-' || str[i] == '+')
 	{
+		if (str[i] == '-')
 			sign = -1;
-			i++;
+		i++;
 	}
+	if (!str[i] || !str)
+		free_exit_error(stack);
 	while (str[i])
 	{
 		if (str[i] >= '0' && str[i] <= '9')
-			number = (number * 10) + (str[i] - '0');
+			number = (number * 10) + (str[i++] - '0');
 		else
-		{
-			free_stack(stack);
-			exit_error();
-		}
-		i++;
+			free_exit_error(stack);
 	}
+	if (check_double(sign * number, stack))
+		free_exit_error(stack);
 	return (sign * number);
 }
