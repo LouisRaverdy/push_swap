@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:01:09 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/11/17 13:56:47 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/11/21 15:55:56 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_list *create_stack(char **array)
 	stack = create_node(0);
 	if (!stack)
 		exit_error();
-	stack->content = ft_atoi(array[i++], stack);
+	stack->value = ft_atoi(array[i++], stack);
 	head = stack;
 	while (array[i])
 	{
