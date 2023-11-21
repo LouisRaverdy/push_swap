@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:01:24 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/11/21 00:17:56 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/11/21 15:52:42 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@
 
 typedef struct		s_list
 {
-	int				*content;
+	int				value;
+	int				index;
+	int				coast_a;
+	int				coast_b;
+	int				pos;
+	int				target_pos;
 	struct s_list	*next;
 }					t_list;
 
