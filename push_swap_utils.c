@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:04:11 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/11/21 00:12:44 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:08:31 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_double(int number, t_list *stack)
 	temp = stack;
 	while(!temp)
 	{
-		if (temp->content == number)
+		if (temp->value == number)
 			return (1);
 		else
 			temp = temp->next;

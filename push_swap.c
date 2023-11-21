@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:01:09 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/11/21 15:55:56 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:08:38 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list *create_node(int content)
 	node = malloc(sizeof(size_t));
 	if (!node)
 		return (NULL);
-	node->content = content;
+	node->value = content;
 	node->next = NULL;
 	return (node);
 }
