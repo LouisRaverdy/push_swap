@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:01:24 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/11/28 14:33:49 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:26:51 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct		s_stack
 }					t_stack;
 
 // Libft Utils
+void	ft_putstr(char *str);
 int		ft_atoi(char *str, t_stack *stack);
 
 // Utils
