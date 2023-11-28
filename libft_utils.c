@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:19:17 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/11/21 00:09:52 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:13:09 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_putstr(char *str)
 		i++;
 	}
 }
-int	ft_atoi(char *str, t_list *stack)
+int	ft_atoi(char *str, t_stack *stack)
 {
 	int	i;
 	int	sign;
