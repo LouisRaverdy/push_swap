@@ -6,13 +6,35 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:53:41 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/11/28 15:45:42 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/05 15:28:39 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	get_position(t_stack **stack)
+int	get_lowest_index(t_stack **stack)
+{
+	t_stack	*temp;
+	int		lowest_index_pos;
+	int		lowest_index;
+
+	temp = (*stack);
+	lowest_index = INT_MAX;
+	lowest_index_pos = temp->pos;
+	get_position(stack);
+	while (temp)
+	{
+		if (temp->index < lowest_index)
+		{
+			lowest_index_pos = temp->pos;
+			lowest_index = temp->index;
+		}
+		temp = temp->next;
+	}
+	return (lowest_index_pos);
+}
+
+void	get_position(t_stack **stack)
 {
 	t_stack	*temp;
 	int		i;
@@ -61,11 +83,9 @@ static int	get_best_position(t_stack **stack_a, int index_b)
 	}
 	if (target_index != INT_MAX)
 		return (target_pos);
-	temp_a = (*stack_a)
-	return (get_best_position_bis(temp_a, target_index, target_pos))
+	temp_a = (*stack_a);
+	return (get_best_position_bis(temp_a, target_index, target_pos));
 }
-
-
 
 void	get_target_position(t_stack **stack_a, t_stack **stack_b)
 {

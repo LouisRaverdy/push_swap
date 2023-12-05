@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:32:55 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/11/28 16:36:55 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/05 16:12:22 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@ void	rotate(t_stack **stack)
 	last->next = head;
 }
 
-void	ra(t_stack **stack_a)
+void	do_ra(t_stack **stack_a)
 {
 	rotate(stack_a);
 	ft_putstr("ra\n");
 }
 
-void	rb(t_stack **stack_b)
+void	do_rb(t_stack **stack_b)
 {
 	rotate(stack_b);
 	ft_putstr("rb\n");
 }
 
-void	rr(t_stack **stack_a, t_stack **stack_b)
+void	do_rr(t_stack **stack_a, t_stack **stack_b)
 {
 	rotate(stack_a);
 	rotate(stack_b);

@@ -6,18 +6,18 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:04:11 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/11/28 14:07:42 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:11:44 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_double(int number, t_stack *stack)
+int	check_double(int number, t_stack **stack)
 {
 	t_stack	*temp;
 
-	temp = stack;
-	while(!temp)
+	temp = (*stack);
+	while(temp)
 	{
 		if (temp->value == number)
 			return (1);
@@ -42,7 +42,7 @@ int	get_stack_size(t_stack *stack)
 	return (size);
 }
 
-void	free_exit_error(t_stack *stack)
+void	free_exit_error(t_stack **stack)
 {
 	free_stack(stack);
 	exit_error();
@@ -54,14 +54,17 @@ void	exit_error()
 	exit(EXIT_FAILURE);
 }
 
-void	free_stack(t_stack *stack)
+void	free_stack(t_stack **stack)
 {
 	t_stack	*temp;
 
-	while(!stack)
+	if (!stack || !(*stack))
+		return ;
+	while (*stack)
 	{
-		temp = stack;
-		stack = stack->next;
-		free(temp);
+		temp = (*stack)->next;
+		free(*stack);
+		*stack = temp;
 	}
+	*stack = NULL;
 }

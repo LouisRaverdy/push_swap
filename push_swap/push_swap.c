@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:01:09 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/11/28 14:06:26 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:37:50 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,15 @@
 t_stack *create_node(int content)
 {
 	t_stack *node;
-	node = malloc(sizeof(size_t));
+	node = malloc(sizeof * node);
 	if (!node)
 		return (NULL);
 	node->value = content;
+	node->index = 0;
+	node->pos = -1;
+	node->target_pos = -1;
+	node->cost_a = -1;
+	node->cost_b = -1;
 	node->next = NULL;
 	return (node);
 }
@@ -33,14 +38,14 @@ t_stack *create_stack(char **array)
 	stack = create_node(0);
 	if (!stack)
 		exit_error();
-	stack->value = ft_atoi(array[i++], stack);
+	stack->value = ft_atoi(array[i++], &stack);
 	head = stack;
 	while (array[i])
 	{
-		head->next = create_node(ft_atoi(array[i++], stack));
+		head->next = create_node(ft_atoi(array[i++], &stack));
 		if (!head)
 		{
-			free_stack(stack);
+			free_stack(&stack);
 			exit_error();
 		}
 		head = head ->next;
@@ -77,9 +82,9 @@ void	set_stack_index(t_stack *stack, int stack_size)
 	}
 }
 
-void	push_swap(t_stack *stack_a, t_stack *stack_b, int stack_size)
+void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 {
-	if (is_sorted(stack_a))
+	if (is_sorted(stack_a, stack_b))
 		return ;
 	if (stack_size == 2)
 		do_sa(stack_a);
@@ -96,13 +101,14 @@ int main(int argc, char **argv)
 	int		stack_size;
 
 	if (argc < 2)
-		exit_error(stack_a);
+		exit_error();
 
 	stack_a = create_stack(argv + 1);
+	stack_b = NULL;
 	stack_size = get_stack_size(stack_a);
-	set_stack_index(stack_a, stack_size);
-	push_swap(stack_a, stack_b, stack_size);
-	free_stack(stack_a);
-	free_stack(stack_b);
+	set_stack_index(stack_a, stack_size + 1);
+	push_swap(&stack_a, &stack_b, stack_size);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }

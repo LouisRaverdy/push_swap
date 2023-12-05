@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:22:19 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/11/28 14:35:57 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/05 15:00:51 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	rev_rotate(t_stack **stack)
 	t_stack	*last;
 	t_stack	*before_last;
 
-	last = get_stack_bottom(stack);
-	before_last = get_stack_before_bottom(stack);
+	last = get_stack_last(*stack);
+	before_last = get_stack_before_last(*stack);
 	temp = *stack;
 	*stack = last;
 	(*stack)->next = temp;
