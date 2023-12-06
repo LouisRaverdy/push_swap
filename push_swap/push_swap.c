@@ -6,13 +6,13 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:01:09 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/12/05 17:37:50 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/06 23:23:46 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack *create_node(int content)
+t_stack	*create_node(int content)
 {
 	t_stack *node;
 	node = malloc(sizeof * node);
@@ -28,7 +28,7 @@ t_stack *create_node(int content)
 	return (node);
 }
 
-t_stack *create_stack(char **array)
+t_stack	*create_stack(char **array)
 {
 	size_t	i;
 	t_stack *stack;
@@ -94,7 +94,7 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 		sort(stack_a, stack_b);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
