@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:01:24 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/12/05 16:52:00 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:22:34 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-# include <stdio.h>
 
 typedef struct		s_stack
 {
@@ -31,7 +30,8 @@ typedef struct		s_stack
 
 // Libft Utils
 void	ft_putstr(char *str);
-int		ft_atoi(char *str, t_stack **stack);
+size_t	ft_strlen(const char *str);
+int		ft_atoi(int first, char *str, t_stack **stack);
 
 // Utils
 void	exit_error();
@@ -87,5 +87,9 @@ int		get_lowest_index(t_stack **stack);
 // Cost
 void	get_cost(t_stack **stack_a, t_stack **stack_b);
 void	exec_cheapest_move(t_stack **stack_a, t_stack **stack_b);
+
+// FT Split
+char	**ft_split(const char *s, char c, t_stack **stack);
+void	free_split(char **tab);
 
 #endif

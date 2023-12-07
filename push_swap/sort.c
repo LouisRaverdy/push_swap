@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:47:12 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/12/05 18:11:07 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/07 16:19:45 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,19 @@ void	sort(t_stack **stack_a, t_stack **stack_b)
 	}
 	if (!is_sorted(stack_a, stack_b))
 		shift_stack(stack_a);
+}
+
+void	free_split(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		if (tab[i])
+			free(tab[i]);
+		i++;
+	}
+	if (tab)
+		free(tab);
 }

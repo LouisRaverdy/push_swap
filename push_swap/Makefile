@@ -6,7 +6,7 @@ RM = rm -f
 
 SRCS = operations/push.c operations/reverse_rotate.c operations/rotate.c \
 operations/swap.c cost.c position.c push_swap_utils_bis.c max_move.c\
-push_swap_utils.c tiny_sort.c sort.c libft_utils.c push_swap.c
+push_swap_utils.c tiny_sort.c sort.c libft_utils.c push_swap.c ft_split.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

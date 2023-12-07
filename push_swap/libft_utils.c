@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:19:17 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/12/05 16:47:03 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:19:42 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,18 @@ void	ft_putstr(char *str)
 		i++;
 	}
 }
-int	ft_atoi(char *str, t_stack **stack)
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+int	ft_atoi(int first, char *str, t_stack **stack)
 {
 	int	i;
 	int	sign;
@@ -47,7 +58,7 @@ int	ft_atoi(char *str, t_stack **stack)
 		else
 			free_exit_error(stack);
 	}
-	if (check_double(sign * number, stack))
+	if (check_double(sign * number, stack) && !first)
 		free_exit_error(stack);
 	return (sign * number);
 }

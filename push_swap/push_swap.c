@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:01:09 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/12/06 23:23:46 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:22:26 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,49 @@ t_stack	*create_node(int content)
 	return (node);
 }
 
+
+void	stack_split(char **tab, t_stack **stack,t_stack **head)
+{
+	size_t	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		(*head)->next = create_node(ft_atoi(0, tab[i], stack));
+		if (!(*head)->next)
+		{
+
+			free_stack(stack);
+			exit_error();
+		}
+		(*head) = (*head)->next;
+		i++;
+	}
+
+}
+
 t_stack	*create_stack(char **array)
 {
 	size_t	i;
 	t_stack *stack;
 	t_stack *head;
+	char	**splited;
 
 	i = 0;
 	stack = create_node(0);
 	if (!stack)
 		exit_error();
-	stack->value = ft_atoi(array[i++], &stack);
 	head = stack;
+	splited = ft_split(array[i++], ' ', &stack);
+	head->value = ft_atoi(1, splited[0], &stack);
+	stack_split(splited+1, &stack, &head);
+	free_split(splited);
 	while (array[i])
 	{
-		head->next = create_node(ft_atoi(array[i++], &stack));
-		if (!head)
-		{
-			free_stack(&stack);
-			exit_error();
-		}
-		head = head ->next;
+		splited = ft_split(array[i], ' ',  &stack);
+		stack_split(splited, &stack, &head);
+		free_split(splited);
+		i++;
 	}
 	return (stack);
 }
