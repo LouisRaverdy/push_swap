@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:01:24 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/12/12 15:37:45 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:33:33 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	exit_error(void);
 void	free_stack(t_stack **stack);
 void	free_exit_error(t_stack **stack);
 int		get_stack_size(t_stack *stack);
-int		check_double(int number, t_stack **stack);
+int		check_double(long number, t_stack **stack);
 
 // Utils Bis
 int		is_sorted(t_stack **stack_a, t_stack **stack_b);

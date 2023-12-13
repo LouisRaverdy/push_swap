@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:19:17 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/12/07 17:19:42 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:31:37 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ size_t	ft_strlen(const char *str)
 
 int	ft_atoi(int first, char *str, t_stack **stack)
 {
-	int	i;
-	int	sign;
-	int	number;
+	int		i;
+	int		sign;
+	long	number;
 
 	i = 0;
 	sign = 1;

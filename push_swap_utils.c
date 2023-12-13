@@ -6,17 +6,19 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:04:11 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/12/12 15:27:26 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:34:15 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_double(int number, t_stack **stack)
+int	check_double(long number, t_stack **stack)
 {
 	t_stack	*temp;
 
 	temp = (*stack);
+	if (number > INT_MAX)
+		return (1);
 	while (temp)
 	{
 		if (temp->value == number)
