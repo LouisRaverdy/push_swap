@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:01:24 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/12/12 16:33:41 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/13 15:19:28 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,11 @@ void	exec_cheapest_move(t_stack **stack_a, t_stack **stack_b);
 // FT Split
 char	**ft_split(const char *s, char c, t_stack **stack);
 void	free_split(char **tab);
+
+// Push Swap
+t_stack	*create_stack(char **array);
+
+// Get Next Line
+char	*get_next_line(int fd);
 
 #endif
