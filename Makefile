@@ -29,7 +29,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 $(BONUS_NAME): $(BONUS_OBJS)
-	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BONUS_OBJS)
+	$(CC) $(BONUS_CFLAGS) -o $(BONUS_NAME) $(BONUS_OBJS)
 
 clean:
 	$(RM) $(OBJS)
