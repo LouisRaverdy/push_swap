@@ -6,23 +6,11 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:09:06 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/10/26 15:04:52 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/14 22:21:02 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	if (str == NULL)
-		return (0);
-	while (str[i])
-		i++;
-	return (i);
-}
 
 char	*ft_strcpy(char *dest, const char *src)
 {

@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:01:24 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/12/12 16:33:33 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/14 22:20:32 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,18 @@ void	do_sb(t_stack **stack_b);
 void	do_ss(t_stack **stack_a, t_stack **stack_b);
 
 // Rotate
+void	rotate(t_stack **stack);
 void	do_ra(t_stack **stack_a);
 void	do_rb(t_stack **stack_b);
 void	do_rr(t_stack **stack_a, t_stack **stack_b);
 
 // Push
+void	push(t_stack **stack_from, t_stack **stack_dest);
 void	do_pa(t_stack **stack_a, t_stack **stack_b);
 void	do_pb(t_stack **stack_a, t_stack **stack_b);
 
 // Reverse Rotate
+void	reverse_rotate(t_stack **stack);
 void	do_rra(t_stack **stack_a);
 void	do_rrb(t_stack **stack_b);
 void	do_rrr(t_stack **stack_a, t_stack **stack_b);
@@ -92,5 +95,8 @@ void	exec_cheapest_move(t_stack **stack_a, t_stack **stack_b);
 // FT Split
 char	**ft_split(const char *s, char c, t_stack **stack);
 void	free_split(char **tab);
+
+// Push Swap
+t_stack	*create_stack(char **array);
 
 #endif

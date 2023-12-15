@@ -6,65 +6,72 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 15:51:43 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/12/13 17:18:09 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/15 01:59:34 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+#include "push_swap.h"
 
-int	is_valid_cmd(char *cmd)
+void	is_valid_cmd(char *cmd, int *error, int argc)
 {
-	if (cmd == "rra" || cmd == "rrb" || cmd == "rrr")
-		return (1);
-	if (cmd == "sa" || cmd == "sb" || cmd == "ss")
-		return (1);
-	if (cmd == "ra" || cmd == "rb" || cmd == "rr")
-		return (1);
-	if (cmd == "pa" || cmd == "pb")
-		return (1);
+	(void)argc;
+	if (ft_strcmp(cmd, "rra\n") || ft_strcmp(cmd, "rrb\n"))
+		(*error) = 0;
+	else if (ft_strcmp(cmd, "rrr\n") || ft_strcmp(cmd, "ss\n"))
+		(*error) = 0;
+	else if (ft_strcmp(cmd, "sa\n") || ft_strcmp(cmd, "sb\n"))
+		(*error) = 0;
+	else if (ft_strcmp(cmd, "ra\n") || ft_strcmp(cmd, "rb\n"))
+		(*error) = 0;
+	else if (ft_strcmp(cmd, "rr\n") || ft_strcmp(cmd, "pa\n"))
+		(*error) = 0;
+	else if (ft_strcmp(cmd, "pb\n") || cmd == NULL)
+		(*error) = 0;
+	else
+		(*error) = 1;
 }
 
-int	dispatcher_instruction(t_stack **stack_a, t_stack **stack_b, char *cmd)
+void	sub_dispatcher_bis(t_stack **stack_a, t_stack **stack_b, char *cmd)
 {
-	if (!ft_strcmp(cmd, "rra\n"))
+	if (ft_strcmp(cmd, "pa\n"))
+		push(stack_b, stack_a);
+	if (ft_strcmp(cmd, "pb\n"))
+		push(stack_a, stack_b);
+	if (ft_strcmp(cmd, "sa\n"))
+		swap(stack_a);
+	if (ft_strcmp(cmd, "sb\n"))
+		swap(stack_b);
+	if (ft_strcmp(cmd, "rrb\n"))
+		reverse_rotate(stack_b);
+}
+
+void	dispatcher_instruction(t_stack **stack_a, t_stack **stack_b, char *cmd)
+{
+	if (ft_strcmp(cmd, "rra\n"))
 		reverse_rotate(stack_a);
-	if (!ft_strcmp(cmd, "ss\n"))
+	if (ft_strcmp(cmd, "ss\n"))
 	{
 		swap(stack_a);
 		swap(stack_b);
 	}
-	if (!ft_strcmp(cmd, "ra\n", 3))
+	if (ft_strcmp(cmd, "ra\n"))
 	{
 		rotate(stack_a);
 	}
-	if (!ft_strcmp(cmd, "rb\n", 3))
+	if (ft_strcmp(cmd, "rb\n"))
 		rotate(stack_b);
-	if (!ft_strcmp(cmd, "rr\n", 3))
+	if (ft_strcmp(cmd, "rr\n"))
 	{
 		rotate(stack_a);
 		rotate(stack_b);
 	}
-	if (!ft_strcmp(cmd, "rrr\n", 4))
+	if (ft_strcmp(cmd, "rrr\n"))
 	{
 		reverse_rotate(stack_a);
 		reverse_rotate(stack_b);
 	}
 	sub_dispatcher_bis(stack_a, stack_b, cmd);
-	return (0);
-}
-
-void	sub_dispatcher_bis(t_stack **stack_a, t_stack **stack_b, char *cmd)
-{
-	if (!ft_strncmp(cmd, "pa\n", 3))
-		push(stack_b, stack_a);
-	if (!ft_strncmp(cmd, "pb\n", 3))
-		push(stack_a, stack_b);
-	if (!ft_strncmp(cmd, "sa\n", 3))
-		swap(stack_a);
-	if (!ft_strncmp(cmd, "sb\n", 3))
-		swap(stack_b);
-	if (!ft_strncmp(cmd, "rrb\n", 4))
-		reverse_rotate(stack_b);
 }
 
 void	write_indicator(t_stack **stack_a, t_stack **stack_b,
@@ -102,10 +109,10 @@ int	main(int argc, char **argv)
 	while (!check && !error)
 	{
 		cmd = get_next_line(0);
-		if (is_valid_cmd(cmd) && !cmd &&
-			dispatcher_instruction(&stack_a, &stack_b, cmd))
-			error = 1;
-		if (error || !cmd)
+		is_valid_cmd(cmd, &error, argc);
+		if (cmd && !error)
+			dispatcher_instruction(&stack_a, &stack_b, cmd);
+		else
 			write_indicator(&stack_a, &stack_b, &error, &check);
 		if (!cmd)
 			free(cmd);
