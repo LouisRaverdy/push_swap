@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:04:11 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/12/12 16:34:15 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/27 15:05:16 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	free_exit_error(t_stack **stack)
 
 void	exit_error(void)
 {
-	ft_putstr("Error\n");
+	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
 

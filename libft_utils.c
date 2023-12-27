@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:19:17 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/12/12 16:31:37 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/27 14:44:35 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,13 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-int	ft_atoi(int first, char *str, t_stack **stack)
+void	atoi_error_free(t_stack **stack, char **tab)
+{
+	ft_free_array(tab);
+	free_exit_error(stack);
+}
+
+int	ft_atoi(int first, char *str, t_stack **stack, char **tab)
 {
 	int		i;
 	int		sign;
@@ -50,15 +56,15 @@ int	ft_atoi(int first, char *str, t_stack **stack)
 		i++;
 	}
 	if (!str[i] || !str)
-		free_exit_error(stack);
+		atoi_error_free(stack, tab);
 	while (str[i])
 	{
 		if (str[i] >= '0' && str[i] <= '9')
 			number = (number * 10) + (str[i++] - '0');
 		else
-			free_exit_error(stack);
+			atoi_error_free(stack, tab);
 	}
 	if (check_double(sign * number, stack) && !first)
-		free_exit_error(stack);
+		atoi_error_free(stack, tab);
 	return (sign * number);
 }

@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:01:09 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/12/12 15:37:20 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/27 15:23:39 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,20 @@ t_stack	*create_node(int content)
 	return (node);
 }
 
-void	stack_split(char **tab, t_stack **stack, t_stack **head)
+void	stack_split(char **tab, t_stack **stack, t_stack **head, int first)
 {
 	size_t	i;
 
 	i = 0;
-	while (tab[i])
+	if (first)
+		i++;
+	while (tab && tab[i])
 	{
-		(*head)->next = create_node(ft_atoi(0, tab[i], stack));
+		(*head)->next = create_node(ft_atoi(0, tab[i], stack, tab));
 		if (!(*head)->next)
 		{
-			free_stack(stack);
-			exit_error();
+			ft_free_array(tab);
+			free_exit_error(stack);
 		}
 		(*head) = (*head)->next;
 		i++;
@@ -54,21 +56,24 @@ t_stack	*create_stack(char **array)
 	t_stack	*head;
 	char	**splited;
 
-	i = 0;
+	i = 1;
 	stack = create_node(0);
 	if (!stack)
 		exit_error();
 	head = stack;
-	splited = ft_split(array[i++], ' ', &stack);
-	head->value = ft_atoi(1, splited[0], &stack);
-	stack_split(splited + 1, &stack, &head);
-	free_split(splited);
+	splited = ft_split(array[0], ' ', &stack);
+	if (!splited)
+		free_exit_error(&stack);
+	head->value = ft_atoi(1, splited[0], &stack, splited);
+	stack_split(splited, &stack, &head, 1);
+	ft_free_array(splited);
 	while (array[i])
 	{
-		splited = ft_split(array[i], ' ', &stack);
-		stack_split(splited, &stack, &head);
-		free_split(splited);
-		i++;
+		splited = ft_split(array[i++], ' ', &stack);
+		if (!splited)
+			free_exit_error(&stack);
+		stack_split(splited, &stack, &head, 0);
+		ft_free_array(splited);
 	}
 	return (stack);
 }
@@ -92,7 +97,7 @@ int	main(int argc, char **argv)
 	int		stack_size;
 
 	if (argc < 2)
-		exit_error();
+		return (0);
 	stack_a = create_stack(argv + 1);
 	stack_b = NULL;
 	stack_size = get_stack_size(stack_a);

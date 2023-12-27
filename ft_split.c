@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 10:35:45 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/12/07 17:20:46 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/27 14:24:26 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,19 @@ static size_t	ft_count_words(const char *s, char c)
 	return (words);
 }
 
-static void	ft_free_array(char **array)
+void	ft_free_array(char **tab)
 {
 	size_t	i;
 
 	i = 0;
-	while (array[i])
+	while (tab && tab[i])
 	{
-		free(array[i]);
+		if (tab[i])
+			free(tab[i]);
 		i++;
 	}
-	free(array);
+	if (tab)
+		free(tab);
 }
 
 static char	*ft_word_dup(const char *str, int start, int finish, char	**array)

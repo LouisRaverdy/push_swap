@@ -2,7 +2,7 @@ NAME = push_swap
 BONUS_NAME = checker
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -I include -I bonus/include
+CFLAGS = -Wall -Werror -Wextra -g -I include -I bonus/include
 RM = rm -f
 
 REQUIRED_SRCS = operations/push.c operations/reverse_rotate.c operations/rotate.c \

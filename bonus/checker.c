@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 15:51:43 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/12/15 01:59:34 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:57:04 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	write_indicator(t_stack **stack_a, t_stack **stack_b,
 	if (is_sorted(stack_a, stack_b) && !(*error))
 		ft_putstr("OK\n");
 	else if (*error)
-		ft_putstr("Error\n");
+		write(2, "Error\n", 6);
 	else
 	{
 		ft_putstr("KO\n");
@@ -101,10 +101,7 @@ int	main(int argc, char **argv)
 	t_stack	*stack_b;
 	t_stack	*stack_a;
 
-	stack_a = create_stack(argv + 1);
-	stack_b = NULL;
-	set_stack_index(stack_a, get_stack_size(stack_a) + 1);
-	error = 0;
+	init_vars(&stack_a, &stack_b, argv, &error);
 	check = 0;
 	while (!check && !error)
 	{
@@ -114,7 +111,7 @@ int	main(int argc, char **argv)
 			dispatcher_instruction(&stack_a, &stack_b, cmd);
 		else
 			write_indicator(&stack_a, &stack_b, &error, &check);
-		if (!cmd)
+		if (cmd)
 			free(cmd);
 	}
 	if (error)

@@ -6,7 +6,7 @@
 /*   By: lraverdy <lraverdy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:01:24 by lraverdy          #+#    #+#             */
-/*   Updated: 2023/12/14 22:20:32 by lraverdy         ###   ########.fr       */
+/*   Updated: 2023/12/27 15:45:03 by lraverdy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_stack
 // Libft Utils
 void	ft_putstr(char *str);
 size_t	ft_strlen(const char *str);
-int		ft_atoi(int first, char *str, t_stack **stack);
+int		ft_atoi(int first, char *str, t_stack **stack, char **tab);
 
 // Utils
 void	exit_error(void);
@@ -94,7 +94,7 @@ void	exec_cheapest_move(t_stack **stack_a, t_stack **stack_b);
 
 // FT Split
 char	**ft_split(const char *s, char c, t_stack **stack);
-void	free_split(char **tab);
+void	ft_free_array(char **tab);
 
 // Push Swap
 t_stack	*create_stack(char **array);
